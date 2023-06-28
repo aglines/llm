@@ -1,10 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https//en.wikipedia.oreg/wiki/GPT-4"
+url = "https://en.wikipedia.org/wiki/GPT-4"
 response = requests.get(url)
 
-soup = BeautifulSoup(response.text, "html.parser")
+soup = BeautifulSoup(response.content, 'html.parser')
 
 content_div = soup.find('div', {'class': 'mw-parser-output'})
 
@@ -14,5 +14,3 @@ for tag in unwanted_tags:
         match.extract()
 
 print(content_div.get_text())
-
-                                
